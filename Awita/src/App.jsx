@@ -1,26 +1,18 @@
 import './App.css'
 
+import Home from './Home/Home'
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-function App() {
-<<<<<<< Updated upstream
-
-  return (
-    <h1 className='text-center'>
-      AWITA u.u
-    </h1>
-  )
-=======
- 
+function App() { 
   return(
 
     <Router>
       <Routes>
-        <Route path="/" element></Route>
+        <Route path="/" element={<Home/>}></Route>
       </Routes>
     </Router>
   );
->>>>>>> Stashed changes
 }
 
 export default App
