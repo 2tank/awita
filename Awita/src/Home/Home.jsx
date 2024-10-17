@@ -10,13 +10,19 @@ import { Link } from 'react-router-dom';
 
 const marks = [
     {
-      value: 0,
+      value: 1,
+    },
+    {
+      value: 10,
     },
     {
       value: 25,
     },
     {
       value: 50,
+    },
+    {
+      value: 75,
     },
     {
       value: 100,
