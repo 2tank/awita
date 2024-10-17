@@ -1,0 +1,155 @@
+html, body {
+    background-color: #f0eee2; 
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    overflow: auto; /* Esto habilita el scroll */
+}
+
+.embalse {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Espaciado entre los artículos */
+    margin: 3%;
+    background-color: #4a81bc;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+    padding: 20px; /* Espaciado interno */
+    width: 40vw; /* Asegúrate de que todas las tarjetas tengan la misma altura */
+}
+
+.embalseTexto {
+    text-align: left;
+    font-size: 1.25vw;
+    line-height: 1.5;
+    padding: 10px;
+    width: 75%;
+    color: #f0eee2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.embalseTextoSecundario {
+    text-align: center; /* Centra el texto */
+    line-height: 1.5;
+    padding: 10px;
+    color: #f0eee2;
+    display: flex;
+    flex-direction: column; /* Cambia la dirección para un mejor diseño */
+    justify-content: center; /* Centra verticalmente */
+}
+
+/* Estilo específico para el número de agua total */
+.embalseTextoSecundario h1 {
+    font-size: 2vw; /* Aumentar tamaño para destacarlo */
+    color: #e1b12c; /* Color dorado */
+    font-weight: bold; /* Hacerlo negrita */
+    margin: 5px 0; /* Margen entre elementos */
+    white-space: nowrap; /* Asegura que el texto no se divida en varias líneas */
+    overflow: hidden; /* Oculta el desbordamiento si el contenido es demasiado largo */
+    text-overflow: ellipsis; /* Muestra "..." si el texto es demasiado largo */
+}
+
+/* Colores para electricidad */
+#electricidad {
+    color: #28a745; /* Verde para "Electricidad" */
+    font-weight: bold; /* Negrita para resaltar */
+}
+
+#noElectricidad {
+    color: #e74c3c; /* Rojo para "No Electricidad" */
+    font-weight: bold; /* Negrita para resaltar */
+}
+
+/* Opcional: Ajustes específicos para tamaños de pantalla más pequeños */
+@media (max-width: 720px) {
+    .embalseTextoSecundario h1{
+        font-size: 5.5vw !important;
+    }
+    .embalse{
+        width: 40vh;
+
+    }.embalseTexto{
+        font-size: 3.5vw !important;
+    }
+}
+
+/* Estilo para el listado de embalses */
+.listadoEmbalses {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.embalseDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button {
+    display: inline-block;
+    margin: 2% 10px; /* Espaciado vertical y horizontal */
+    padding: 10px 20px;
+    background-color: #3b6695; /* Azul principal */
+    color: #ffffff; /* Color del texto */
+    font-size: 1.5vh;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    flex: 1; /* Se expanden para ocupar el mismo espacio */
+    max-width: 200px; /* Máximo ancho de cada botón */
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #589ed7; /* Azul más claro en hover */
+    color: #f0f0f0;
+    border-color: #3b6695; /* Borde al hacer hover */
+    cursor: pointer;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+.button:active {
+    background-color: #2a4d73; /* Azul más oscuro cuando se hace clic */
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px); /* Efecto de hundimiento al hacer clic */
+}
+
+.filterContainer {
+    margin: 20px auto; /* Margen superior e inferior y centrar horizontalmente */
+    display: flex; /* Para alinear los elementos horizontalmente */
+    flex-direction: column; /* Columnas en lugar de filas */
+    max-width: 500px; /* Ancho máximo del contenedor */
+    width: 100%; /* Ancho completo hasta el máximo */
+    padding: 20px; /* Espaciado interno */
+}
+
+.filterContainer input {
+    margin: 10px 0; /* Margen entre los campos de entrada */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #3b6695; /* Borde azul */
+    width: calc(100% - 22px); /* Ancho del input menos márgenes */
+}
+
+.filterContainer button {
+    padding: 10px 20px; /* Espaciado interno del botón */
+    background-color: #3b6695; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    width: 100%; /* Botón ocupa todo el ancho disponible */
+}
+
+.error {
+    color: red; /* Color rojo para el mensaje de error */
+    text-align: center; /* Centrar el texto */
+}
