@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Logo from '../../public/UMA.gif'
 import { Link } from 'react-router-dom';
+import NavBar from '../Components/NavBar'
 
 const marks = [
     { value: 1 },
@@ -46,13 +47,13 @@ function Home() {
         }
     }, []);
 
-    const [text] = useTypewriter({
-        words: ['sostenibilidad.', 'inclusión.', 'resiliencia.', 'igualdad.', 'educación.'],
-        loop: 0, 
-        typeSpeed: 100,
-        deleteSpeed: 70,
-        delaySpeed: 4000,
-    });
+    // const [text] = useTypewriter({
+    //     words: ['sostenibilidad.', 'inclusión.', 'resiliencia.', 'igualdad.', 'educación.'],
+    //     loop: 0, 
+    //     typeSpeed: 100,
+    //     deleteSpeed: 70,
+    //     delaySpeed: 4000,
+    // });
 
     const [sliderValue, setSliderValue] = useState(25);
 
@@ -61,10 +62,14 @@ function Home() {
     };
 
     return (
-        <section id={"homeSection"}>
+      <>
+
+      <NavBar></NavBar>
+
+      <section id={"homeSection"}>
             <article id={"encabezadoHome"}>
-                <h1>{text || "\u00A0"}</h1>
-                <h3>{"(Swaping, busca embalses según tu ubicación, con un modelo predictivo que facilita decisiones basadas en datos hídricos.)"}</h3>
+                <h1>{"swamping." || "\u00A0"}</h1>
+                <h3>{"Busca embalses según tu ubicación, con un modelo predictivo que facilita decisiones basadas en datos hídricos."}</h3>
             </article>
 
             <section>
@@ -88,10 +93,10 @@ function Home() {
                 </div>
                 <div className='homeButtons'>
                 <Link className={"link-button"} to="/reservoirs" state={{ location, sliderValue }}>
-                    Ver embalses cerca en Mapa
+                    Ver en Mapa
                 </Link>
                 <Link className={"link-button"} to="/reservoirs" state={{ location, sliderValue }}>
-                    Buscar embalses cerca en lista
+                    Ver en lista
                 </Link>
                 </div>
             </section>
@@ -100,6 +105,7 @@ function Home() {
                 <img src={Logo} alt="Logo" style={{ width: '7vh' }} />
             </div>
         </section>
+      </>
     );
 }
 

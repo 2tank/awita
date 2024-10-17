@@ -1,5 +1,6 @@
 #root{
     padding: 0;
+    max-width: none;
 }
 
 
@@ -18,9 +19,8 @@ html,body {
     flex-direction: column;
     align-content: center;
     justify-content: space-around;
-    height: 99vh;
+    height: 94vh;
     width: 100%;
-    gap: 10%;
 }
 
 #encabezadoHome{
@@ -29,20 +29,38 @@ html,body {
     justify-content: center;
 }
 
-#encabezadoHome h1{
+#encabezadoHome h1 {
     color: #3b6695;
-    font-size: 10vh; 
+    font-size: 12vh;
     font-family: 'Poppins', sans-serif; 
     font-weight: 1000; 
     font-style: italic; 
+    text-align: center;
+    margin: 0 auto;
+    max-width: 90%;
 }
 
-#encabezadoHome h3{
-    color: #0d7692;
-    padding-top: 2%;
-    font-weight: 550;
-    font-size: 2vh; 
+@media (max-width: 1024px) {
+    #encabezadoHome h1 {
+        font-size: 7vh; 
+        max-width: 70%;
+    }
 
+    #encabezadoHome h3 {
+        font-size: 1.8vh; 
+        padding-top: 1.5%;
+        max-width: 95%;
+    }
+}
+
+#encabezadoHome h3 {
+    color: #0d7692;
+    padding-top: 1%;
+    font-weight: 400;
+    font-size: 2vh;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 47%;
 }
 
 #homeForm{
@@ -71,7 +89,7 @@ html,body {
 
   .link-button {
     display: inline-block;
-    margin: 1.5% 10px; /* Espaciado vertical y horizontal */
+    margin: 2% 10px; /* Espaciado vertical y horizontal */
     padding: 10px 20px;
     background-color: #3b6695; /* Azul principal */
     color: #ffffff; /* Color del texto */

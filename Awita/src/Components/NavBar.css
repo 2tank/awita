@@ -1,0 +1,32 @@
+.animatedSpanNavBar{
+    box-sizing: inherit;
+    transition-property: all;
+    transition-duration: .6s;
+    transition-timing-function: ease;
+    letter-spacing: 0;
+    cursor: pointer;
+  }
+
+.animatedSpanNavBar:hover,
+.animatedSpanNavBar:active {
+    background-color: rgba(250, 235, 215, 0.313);
+    border-radius: 7px;
+    letter-spacing: 5px;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #3b6695; /* Color de fondo */
+    padding: 15px 0; /* Espaciado en la parte superior e inferior */
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+}
+
+/* Estilos de la lista del navbar */
+.navbar-list {
+    color: #f0eee2;
+    list-style: none; /* Elimina los puntos de la lista */
+    display: flex; /* Coloca los elementos en una fila */
+    gap: 30px; /* Espacio entre los elementos del navbar */
+}
