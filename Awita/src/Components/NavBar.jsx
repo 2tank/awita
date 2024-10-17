@@ -8,8 +8,8 @@ const NavBar = () => {
 
     return (
 
-    <nav class="navbar">
-        <ul class="navbar-list">
+    <nav className="navbar">
+        <ul className="navbar-list">
             <li><Link to="/reservoirs" className="animatedSpanNavBar">Embalses</Link></li>
             <li><Link to="/prediction-model" className="animatedSpanNavBar">Modelo Predicción</Link></li>
         </ul>

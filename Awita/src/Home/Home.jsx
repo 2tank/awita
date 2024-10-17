@@ -68,7 +68,7 @@ function Home() {
 
       <section id={"homeSection"}>
             <article id={"encabezadoHome"}>
-                <h1>{"swamping." || "\u00A0"}</h1>
+                <h1>swamping.</h1>
                 <h3>{"Busca embalses según tu ubicación, con un modelo predictivo que facilita decisiones basadas en datos hídricos."}</h3>
             </article>
 
@@ -95,14 +95,14 @@ function Home() {
                 <Link className={"link-button"} to="/reservoirs" state={{ location, sliderValue }}>
                     Ver en Mapa
                 </Link>
-                <Link className={"link-button"} to="/reservoirs" state={{ location, sliderValue }}>
+                <Link className={"link-button"} to="/ver-embalse" state={{ location, sliderValue }}>
                     Ver en lista
                 </Link>
                 </div>
             </section>
 
             <div id={"logoUma"}>
-                <img src={Logo} alt="Logo" style={{ width: '7vh' }} />
+                <img src={Logo} alt="Logo" style={{ width: '7vh'}} />
             </div>
         </section>
       </>
