@@ -21,26 +21,24 @@ const haversineDistance = (user_x, user_y, pant_x, pant_y) => {
     return distance; // Devuelve la distancia en kilómetros
 };
 
-const dataAlgo = (data, refX, refY, radius) => {
-    return data.filter(item => {
+const dataFiltering = (data, refX, refY, radius) => {
+    // Convertimos el JSON a un array, asegurándonos de que sea un array
+    const dataArray = Array.isArray(data) ? data : Object.values(data);
+
+    return dataArray.filter(item => {
         // Calculamos la distancia del punto respecto a un punto de referencia (refX, refY)
         let distancia = haversineDistance(refX, refY, item.x, item.y);
+        console.log(distancia);
       
         // Si la distancia es mayor que un umbral, eliminamos el elemento
-        if (distancia > radius * 1000) {
-            return false; // No incluye este elemento en el nuevo array
-        } else {
-            // Si la distancia es válida, añadimos el nuevo campo 'distancia'
-            item.distancia = distancia;
-            return true; // Mantén este elemento en el array
-        }
+        return distancia <= radius/1000;
     });
 }
 
 async function consultarApiOracle(x, y) {
     try {
         // Primer fetch: datos de posición
-        let responsePosicion = await fetch(`https://g6f757b5f511ccb-retomalakathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/listadosinarticuloxysico/?q={"X":"${x}","Y":"${y}"}`, {
+        let responsePosicion = await fetch(`https://g6f757b5f511ccb-retomalakathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/listadonum/?q={"X":"${x}","Y":"${y}"}`, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -105,7 +103,23 @@ async function consultarApiOracle(x, y) {
   async function encontrarCercanos(user_x,user_y) {
     try {
       // Primer fetch: datos de posición
-      let responsePosicion = await fetch('https://g6f757b5f511ccb-retomalakathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/embalsesutf8sinarticulosnico/?q={"$and":[{"X":{"$lt":${user_x+2}}},{"X":{"$gt":${user_x-2}}},{"Y":{"$lt":${user_y+1}}},{"Y":{"$gt":${user_y-1}}}]}', {
+      let responsePosicion = await fetch(`https://g6f757b5f511ccb-retomalakathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/listadonum/?q={
+  "$and": [
+    {
+      "$and": [
+        {"X": {"$lt": ${user_x + 2}}},
+        {"X": {"$gt": ${user_x - 2}}}
+      ]
+    },
+    {
+      "$and": [
+        {"Y": {"$lt": ${user_y + 1}}},
+        {"Y": {"$gt": ${user_y - 1}}}
+      ]
+    }
+  ]
+}
+`, {
           headers: {
               'Content-Type': 'application/json'
           }
@@ -115,7 +129,7 @@ async function consultarApiOracle(x, y) {
           throw new Error('Error en la consulta de Posicion: ' + responsePosicion.status);
       }
       let data = await responsePosicion.json();
-  
+
       return data;
   
   } catch (error) {
@@ -124,4 +138,4 @@ async function consultarApiOracle(x, y) {
   }
   }
   
-export { haversineDistance, dataAlgo, consultarApiOracle, actualizarJsonConApi };
+export { haversineDistance, dataFiltering, consultarApiOracle, actualizarJsonConApi, encontrarCercanos};

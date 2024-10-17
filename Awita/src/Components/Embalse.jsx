@@ -1,11 +1,12 @@
 import './Embalse.css';
 
-function Embalse({ nombre, ambito, aguaTotal, generaElectricidad }) {
+function Embalse({ id, nombre, ambito, aguaTotal, generaElectricidad }) {
     return (
         <section className="embalse">
             <article className='embalseTexto'>
                 <h1>{`Nombre del Embalse: ${nombre}`}</h1>
                 <h2>{`Ámbito: ${ambito}`}</h2>
+                <h2>{`ID: ${id}`}</h2>
             </article>
             <article className='embalseTextoSecundario'>
                 <h1>{`${aguaTotal} m³`}</h1>

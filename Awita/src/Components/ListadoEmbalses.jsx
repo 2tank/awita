@@ -102,7 +102,7 @@ function ListadoEmbalses() {
     return (
         <>
             <NavBar></NavBar>
-            
+
             <div className="filterContainer">
                 <input 
                     type="text" 
@@ -133,6 +133,7 @@ function ListadoEmbalses() {
                 {embalses.map((embalse) => (
                     <div className="embalseDiv" key={embalse.id}>
                         <Embalse
+                            id={embalse.id}
                             nombre={embalse.embalse_nombre}
                             ambito={embalse.ambito_nombre}
                             aguaTotal={embalse.agua_total}
