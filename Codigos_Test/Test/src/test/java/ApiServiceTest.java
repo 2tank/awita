@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class ApiServiceTest {
     String urlEmbalses = "https://g6f757b5f511ccb-retomalakathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/embalsesutf8sinarticulosnico/";
     String urlAgua = "https://g6f757b5f511ccb-retomalakathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/agua/";
-    String urlListaEmbalses= "https://g6f757b5f511ccb-retomalakathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/listadosinarticuloxysico/";
+    String urlListaEmbalses= "https://g6f757b5f511ccb-retomalakathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/listadonum/";
 
     @Test
     @DisplayName("Hacer una peticion a la api, de la tabla agua, con una query usando id devuelve el embalse correctamente")
@@ -137,7 +137,7 @@ public class ApiServiceTest {
     @DisplayName("Hacer una peticion a la api del listado de embalses usando coordenadas, devuelve el embalse correctamente")
     public void getListaEmbalse_XY_DevuelveEmbalseCorrespondiente(){
         //Arrange
-        String query = "{\"X\":\"0,991459934\",\"Y\":\"42,50037097\"}";
+        String query = "{\"X\":\"0.991459934\",\"Y\":\"42.50037097\"}";
 
         String codigoEsperado = "9250031";
 

@@ -6,14 +6,14 @@ export const options = {
     { duration: '10s', target: 1 },
     { duration: '30s', target: 20 },
     { duration: '30s', target: 50 },
-    { duration: '30s', target: 100 },
-    { duration: '30s', target: 200 },
+    { duration: '1m', target: 100 },
+    { duration: '1m', target: 200 },
     { duration: '10s', target: 0 },
   ],
 };
 
 export default function () {
-  const url = 'https://librewolf.net/';
+  const url = 'http://localhost:5173/';
   
   const res = http.get(url);
 

@@ -4,12 +4,12 @@ import { check, sleep } from 'k6';
 export const options = {
   stages: [
     { duration: '30s', target: 50 },   
-    { duration: '5m', target: 10000 },    
+    { duration: '2m', target: 10000 },    
   ],
 };
 
 export default function () {
-  const url = 'https://librewolf.net/';
+  const url = 'http://localhost:5173/';
   
   const res = http.get(url);
 
