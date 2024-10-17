@@ -65,13 +65,13 @@ html,body {
     text-align: center; 
     height: 15%; 
     width: fit-content;
-    font-size: 6vh;
+    font-size: 4.5vh;
     color: antiquewhite;
   }
 
-.link-button {
+  .link-button {
     display: inline-block;
-    margin-top: 1.5%;
+    margin: 1.5% 10px; /* Espaciado vertical y horizontal */
     padding: 10px 20px;
     background-color: #3b6695; /* Azul principal */
     color: #ffffff; /* Color del texto */
@@ -83,6 +83,9 @@ html,body {
     border: 2px solid transparent;
     transition: all 0.3s ease;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    flex: 1; /* Se expanden para ocupar el mismo espacio */
+    max-width: 200px; /* Máximo ancho de cada botón */
+    text-align: center;
 }
 
 .link-button:hover {
@@ -99,3 +102,28 @@ html,body {
     transform: translateY(2px); /* Efecto de hundimiento al hacer clic */
 }
 
+.homeButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Aseguramos que el contenedor ocupe el 100% */
+    gap: 10px; /* Separación entre botones */
+}
+
+@media (max-width: 768px) { /* Estilos responsivos para pantallas pequeñas */
+    .homeButtons {
+        flex-direction: column; /* Los botones se apilan en pantallas pequeñas */
+    }
+
+    .link-button {
+        width: 80%; /* Ocupan el 80% del ancho en pantallas pequeñas */
+        max-width: none; /* Deshabilitamos el máximo ancho en pantallas pequeñas */
+    }
+
+    #homeSection{
+        justify-content: center;
+        gap: 5%;
+    }
+
+}

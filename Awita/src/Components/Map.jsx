@@ -1,54 +1,72 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import 'leaflet/dist/leaflet.css'; // Asegúrate de que el CSS se importa correctamente
+import { useLocation } from 'react-router-dom';
+import './Map.css'
 
-const MapComponent = ({umbralRadio}) => {
-    const [position, setPosition] = useState([51.505, -0.09]); // Ubicación inicial
-    const [radius, setRadius] = useState(umbralRadio); // Radio en metros
+const MapComponent = () => {
+  
+    // Accedemos a la ubicación desde el estado
+  const locationDataTransfre = useLocation();
+  const userLocation = locationDataTransfre.state?.location;
 
-    // Obtener la ubicación actual del usuario
-    useEffect(() => {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        setPosition([pos.coords.latitude, pos.coords.longitude]);
-      });
-    }, []);
+  // Extraemos la latitud y longitud
+  const latitude = userLocation?.lat || 51.505; // Latitud por defecto si no hay datos
+  const longitude = userLocation?.lng || -0.09; // Longitud por defecto si no hay datos
+  const radius = (locationDataTransfre.state?.sliderValue || 25) * 1000; // Valor por defecto 25 km
 
-    // Puntos de ejemplo con coordenadas y datos
-    const points = [
-      { id: 1, name: 'Punto 1', coords: [51.505, -0.08] },
-      { id: 2, name: 'Punto 2', coords: [51.51, -0.1] },
-      { id: 3, name: 'Punto 3', coords: [51.51, -0.12] }
-    ];
+  const [position, setPosition] = useState([latitude, longitude]); // Ubicación inicial
 
-    return (
-      <MapContainer center={position} zoom={13} style={{ height: '500px', width: '100%' }}>
-        {/* Capa de OpenStreetMap /}
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
+  // Si se recibe userLocation, actualizar la posición
+  useEffect(() => {
+    if (userLocation && userLocation.lat && userLocation.lng) {
+      setPosition([userLocation.lat, userLocation.lng]);
+    }
+  }, [userLocation]);
 
-        {/ Marcador en la ubicación actual /}
-        <Marker position={position}>
-          <Popup>Tu ubicación actual</Popup>
-        </Marker>
+  // Definir el valor del zoom según el radio
+  let zoom = 12;
+  switch (radius) {    
+    case 1000:
+        zoom = 15;
+        break;
+    case 5000:
+        zoom = 14;
+        break;
+    case 10000:
+        zoom = 13;
+        break;
+    case 25000:
+        zoom = 10;
+        break;
+    case 50000:
+        zoom = 9;
+        break;
+    case 75000:
+        zoom = 8;
+        break;
+    case 100000:
+        zoom = 7;
+        break;
+    default:
+        zoom = 12; // Valor por defecto
+        break;
+  }
 
-        {/ Círculo con un radio de X metros /}
-        <Circle center={position} radius={radius} color="blue" />
+  return (
+    <MapContainer className={"mapContainer"} center={position} zoom={zoom} style={{ height: '100vh', width: '100%' }}>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      />
 
-        {/ Marcadores interactivos */}
-        {points.map(point => (
-          <Marker key={point.id} position={point.coords}>
-            <Popup>
-              {point.name}
-              <br />
-              Coordenadas: {point.coords[0]}, {point.coords[1]}
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
-    );
-  };
+      <Marker position={position}>
+        <Popup>Tu ubicación actual</Popup>
+      </Marker>
 
-  export default MapComponent;
+      <Circle center={position} radius={radius} color='blue'></Circle>
+    </MapContainer>
+  );
+};
+
+export default MapComponent;
