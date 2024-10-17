@@ -12,6 +12,7 @@ public class ApiServiceTest {
     String urlEmbalses = "https://g6f757b5f511ccb-retomalakathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/embalsesutf8sinarticulosnico/";
     String urlAgua = "https://g6f757b5f511ccb-retomalakathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/agua/";
     String urlListaEmbalses= "https://g6f757b5f511ccb-retomalakathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/listadonum/";
+    String urlPredicciones = "https://g6f757b5f511ccb-retomalakathon.adb.eu-madrid-1.oraclecloudapps.com/ords/test/predictions/";
 
     @Test
     @DisplayName("Hacer una peticion a la api, de la tabla agua, con una query usando id devuelve el embalse correctamente")
@@ -153,6 +154,27 @@ public class ApiServiceTest {
         //Assert
         assertEquals(codigoEsperado, codigoObtenido);
     }
+
+    @Test
+    @DisplayName("Hacer una peticion a la api de las predicciones, devuelve todas las predicciones")
+    public void getPredricciones_DevuelveTodasPredicciones() {
+        //Arrange
+        int tamanyoEsperado = 25;
+
+        //Act
+        Response response = RestAssured
+                .given()
+                .when()
+                .get(urlAgua);
+
+        int tamanyoObtenido = response.jsonPath().getList("items").size();
+
+        //Assert
+        assertEquals(tamanyoEsperado, tamanyoObtenido);
+
+    }
+
+
 
 
 
