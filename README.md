@@ -24,3 +24,4 @@
 - React
 - Java
 - Python
+- Oracle Database
