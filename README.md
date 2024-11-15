@@ -13,10 +13,10 @@
 ## Componentes del grupo:
 
 - Adrián Fernández Vera
+- Antonio Salvador Gámez Zafra
+- Jaime Ezequiel Rodríguez Rodríguez
 - Pablo Miguel Aguilar Blanco
 - Pablo Márquez Benítez
-- Antonio
-- Jaime Ezequiel
 
 
 ## Tecnologías usadas:
